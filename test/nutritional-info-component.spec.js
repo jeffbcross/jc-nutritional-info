@@ -17,6 +17,46 @@ describe('dpdCollection', function () {
     $httpBackend.verifyNoOutstandingRequest();
   });
 
+
+  describe('stripUnit', function () {
+    var stripUnit;
+    beforeEach(function () {
+      stripUnit = $filter('stripUnit');
+    });
+
+
+    it('should return a tuple of numeric value and unit string', function () {
+      expect(stripUnit('5mg')).toEqual([5,'mg'])
+    });
+
+
+    it('should replace the unit with an empty string if just number provided', function () {
+      expect(stripUnit('5')).toEqual([5, '']);
+    });
+
+
+    it('should complain if input does not start with number', function () {
+      expect(function () {stripUnit('twinkie')}).toThrow(new Error('Value must contain a value'));
+    });
+  });
+
+
+  describe('foodsToNutrition', function () {
+    var foodsToNutrition;
+
+    beforeEach(function () {
+      foodsToNutrition = $filter('foodsToNutrition');
+    });
+
+
+    it('should return an ordered array of directive-friendly data', function () {
+      var output = foodsToNutrition([{carbohydrate: '5mg', sodium: '5mg'}, {sodium: '5mg'}]);
+      expect(output[0].total).toBe('5mg');
+      expect(output[2].total).toBe('10mg');
+    });
+  });
+
+
   describe('jcNutritionalInfo', function () {
     it('should show a message when no data provided', function () {
       $rootScope.nutritionalInfo = [];
