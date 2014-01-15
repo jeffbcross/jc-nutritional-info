@@ -1,0 +1,31 @@
+{
+  "name": "jc-nutritional-info",
+  "version": "0.0.2",
+  "homepage": "https://github.com/jeffbcross/jc-nutritional-info",
+  "authors": [
+    "Jeff Cross <middlefloor@gmail.com>"
+  ],
+  "description": "An AngularJS component to show nutritional information, supporting one level deep of children.",
+  "main": "dist/nutritional-info-component.js",
+  "keywords": [
+    "nutrition",
+    "angular",
+    "javascript",
+    "bootstrap"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "src/",
+    "**/.*",
+    "bower_components/",
+    "node_modules/",
+    "package.json",
+    "test",
+    "dist.js",
+    "karma.conf.js",
+    "README.md"
+  ],
+  "devDependencies": {
+    "angular-mocks": "~1.2.8"
+  }
+}
