@@ -34,7 +34,46 @@ angular.module('jcNutritionalInfo', []).
         name: 'Protein',
         total: '',
         children: []
+      },{
+        name: 'Calories',
+        total: '',
+        children: []
+      },{
+        name: 'Fat',
+        total: '',
+        children: [{
+          name: 'Saturated Fat',
+          total: ''
+        },{
+          name: 'Poly Unsaturated Fat',
+          total: ''
+
+        },{
+          name: 'Mono Unsaturated Fat',
+          total: ''
+        }]
+      },{
+        name: 'Potassium',
+        total: ''
       }];
+
+      /*
+      {
+            "cholesterol": Math.round(Math.random() * 10) + "mg",
+            "sodium": Math.round(Math.random() * 10) + "mg",
+            "carbohydrate": Math.round(Math.random() * 10) + "mg",
+            "dietaryFiber": Math.round(Math.random() * 10) + "mg",
+            "sugars": Math.round(Math.random() * 10) + "mg",
+            "protein": Math.round(Math.random() * 10) + "mg",
+
+            "calories": "150mg",
+            "fat": "4g",
+            "saturatedFat": "2g",
+            "polyunsaturatedFat": "0",
+            "monounsaturatedFat": "0",
+            "potassium": "0",
+          }
+      */
 
       var stripUnit = $filter('stripUnit');
       foods.forEach(function (nutrition) {
@@ -72,6 +111,24 @@ angular.module('jcNutritionalInfo', []).
             break;
           case 'protein':
             nutrition[3].total = val;
+            break;
+          case 'calories':
+            nutrition[4].total = val;
+            break;
+          case 'fat':
+            nutrition[5].total = val;
+            break;
+          case 'saturatedFat':
+            nutrition[5].children[0].total = val;
+            break;
+          case 'polyunsaturatedFat':
+            nutrition[5].children[1].total = val;
+            break;
+          case 'monounsaturatedFat':
+            nutrition[5].children[2].total = val;
+            break;
+          case 'potassium':
+            nutrition[6].total = val;
             break;
           default:
             //ignore
