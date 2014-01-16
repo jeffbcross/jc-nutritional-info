@@ -4,7 +4,7 @@ angular.module('jcNutritionalInfo', []).
       var match = /[a-z]+/.exec(val);
       var unit = match && match[0] ? match[0] : '';
       number = parseInt(val.replace(unit, ''), 10);
-      if (!number) throw new Error('Value must contain a value');
+      if (typeof number !== 'number') throw new Error('Value must contain a value');
 
       return [number, unit];
     }
@@ -74,7 +74,7 @@ angular.module('jcNutritionalInfo', []).
             nutrition[3].total = val;
             break;
           default:
-            console.log('Could not add nutrition', key);
+            //ignore
 
         }
       })
